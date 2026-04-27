@@ -14,6 +14,7 @@ export type LogType =
   | "bucket_fill"
   | "bucket_empty"
   | "explosion"
+  |  "player_craft"
   | string;
 
 export interface EntityDeathData {
@@ -54,12 +55,20 @@ export interface ChatData {
   player_name: string;
   message: string;
 }
+export interface PlayerCraftData {
+  player_uuid: string;
+  player_name: string;
+  crafted_item: string;
+  crafted_amount: number;
+  recipe_type: string;
+}
 
 export type LogData =
   | EntityDeathData
   | PlayerDeathData
   | BlockData
   | ChatData
+  | PlayerCraftData
   | Record<string, unknown>;
 
 export interface LogEntry {

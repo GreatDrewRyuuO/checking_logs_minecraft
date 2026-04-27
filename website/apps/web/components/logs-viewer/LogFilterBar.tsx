@@ -35,6 +35,7 @@ const LOG_TYPE_LABELS: Record<string, string> = {
   player_quit: "Player Quit",
   sign_text: "Sign Text",
   explosion: "Explosion",
+  player_craft: "Player Craft",
 };
 
 export function LogFilterBar({ onFilterChange, isLoading }: LogFilterBarProps) {

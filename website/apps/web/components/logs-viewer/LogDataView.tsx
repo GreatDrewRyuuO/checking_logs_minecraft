@@ -161,6 +161,29 @@ export function LogDataView({ logType, data, className }: LogDataViewProps) {
         <DataField label="Amount" value={`×${str(d.amount)}`} mono />
       )}
 
+      {/* Crafted item — player_craft */}
+      {d.crafted_item != null && (
+        <DataField
+          label="Crafted"
+          value={
+            <span className="text-blue-300 font-semibold font-mono tracking-wide">
+              {str(d.crafted_item).replace(/_/g, " ")}
+            </span>
+          }
+          mono
+        />
+      )}
+      {d.crafted_amount != null && (
+        <DataField label="Amount" value={`×${str(d.crafted_amount)}`} mono />
+      )}
+      {d.recipe_type != null && (
+        <DataField
+          label="Recipe"
+          value={str(d.recipe_type).replace(/([A-Z])/g, " $1").trim()}
+          mono
+        />
+      )}
+
       {/* Location */}
       {hasLocation && (
         <div className="flex items-start gap-2">
@@ -177,7 +200,7 @@ export function LogDataView({ logType, data, className }: LogDataViewProps) {
       )}
 
       {/* Fallback raw JSON for uncommon types */}
-      {!["entity_death", "player_death", "block_break", "block_place", "chat"].includes(
+      {!["entity_death", "player_death", "block_break", "block_place", "chat", "player_craft"].includes(
         logType
       ) && (
         <details className="group">

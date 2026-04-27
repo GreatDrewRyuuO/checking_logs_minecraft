@@ -77,6 +77,11 @@ const LOG_TYPE_CONFIG: Record<
     color: "bg-red-950/60 text-red-400 border-red-700/50",
     icon: "💥",
   },
+    player_craft: {
+    label: "Player Craft",
+    color: "bg-blue-950/60 text-blue-300 border-blue-800/50",
+    icon: "⚒",
+  },
 };
 
 const DEFAULT_CONFIG = {
