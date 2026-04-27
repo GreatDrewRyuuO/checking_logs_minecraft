@@ -43,6 +43,7 @@ function getRowAccentClass(logType: string): string {
     player_join: "border-l-emerald-700/70 hover:border-l-emerald-500",
     player_quit: "border-l-slate-700/70 hover:border-l-slate-500",
     explosion: "border-l-red-700/70 hover:border-l-red-500",
+    player_craft: "border-l-blue-800/70 hover:border-l-blue-500",
   };
   return map[logType] ?? "border-l-zinc-700/70 hover:border-l-zinc-500";
 }
@@ -132,6 +133,20 @@ export function LogRow({ log }: LogRowProps) {
               <pre className="text-[11px] font-mono text-zinc-400 bg-black/30 rounded p-2 overflow-auto max-h-48">
                 {JSON.stringify(log.data, null, 2)}
               </pre>
+              {/* crafted_item highlight in expanded view */}
+              {log.log_type === "player_craft" && (
+                <div className="mt-2 flex items-center gap-2 px-2 py-1.5 bg-blue-950/30 border border-blue-800/40 rounded">
+                  <span className="text-blue-500 text-[10px] font-mono uppercase tracking-widest shrink-0">
+                    Crafted Item
+                  </span>
+                  <span className="text-blue-200 font-mono font-bold text-sm tracking-wide">
+                    {String((log.data as Record<string, unknown>).crafted_item ?? "").replace(/_/g, " ")}
+                  </span>
+                  <span className="text-blue-400 font-mono text-xs ml-auto">
+                    ×{String((log.data as Record<string, unknown>).crafted_amount ?? 1)}
+                  </span>
+                </div>
+              )}
             </div>
 
             {/* Metadata */}
